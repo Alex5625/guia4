@@ -1,4 +1,3 @@
-
 use std::io;
 
 fn texto_numero() -> i32 {
@@ -18,11 +17,12 @@ fn texto_numero() -> i32 {
     }
 }
 
+
+
 fn crea_arreglo_numeros() -> [i32; 10]{
     let mut arreglo: [i32; 10] = [0; 10];
     let mut largo = 0;
 
-    //largo de los elementos a cambiar
     loop{
         println!("Ingrese un numero entre 0 y 10");
         largo = texto_numero();
@@ -30,40 +30,36 @@ fn crea_arreglo_numeros() -> [i32; 10]{
             break
         }
     }
-    //indica los numeros para modificar los elementos del array
+
     for indice in 0..largo as usize{
-        // println!("{indice}");
+        //println!("{indice}");
         let numero = texto_numero();
         arreglo[indice] = numero;
     }
-    return arreglo;
-}
-//se deja como procedimiento
-fn buscar_numero(arreglo: [i32;10])->(){
-    let mut booleano:bool = true;
-    println!("Dime un numero que quieras encontrar dentro del arreglo");
-    let numero = texto_numero();
 
+    return arreglo
+
+}
+
+fn elimina_dupli(mut arreglo:[i32;10]) -> (){
+    let mut numerOriginal: i32 = 0;
     for i in 0..arreglo.len(){
-        if arreglo[i] == numero{
-            booleano = true;
-        } else {
-            booleano = false;
+        // println!("arreglo principal {}",arreglo[i]);  
+        numerOriginal = arreglo[i];
+        for x in i+1..arreglo.len(){
+            // println!(" n {}",arreglo[x]);
+            if numerOriginal == arreglo[x]{
+                arreglo[x] = 0;
+            }
         }
     }
+    println!("{:?}",arreglo);
+}
 
-    if booleano {
-        println!("El numero {numero} se encuentra dentro del arreglo");
-    }else{
-        println!("El numero {numero} no se encuentra dentro del arreglo");
-    }
-
-}   
 
 fn main(){
 
-    let arreglo: [i32; 10] = crea_arreglo_numeros();
-    println!("El arreglo original es: {:?}", arreglo);
-    buscar_numero(arreglo);
-
+    let arreglo = crea_arreglo_numeros();
+    println!("{:?}", arreglo);
+    elimina_dupli(arreglo);
 }
