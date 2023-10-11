@@ -57,8 +57,5 @@ fn main(){
     println!("magtriz1 {:?} y matriz 2 {:?} ",matriz1,matriz2);
     sumar_matrices(matriz1,matriz2);
 
-    // println!("{:?}", matriz2);
-    // let matriznueva2 = modificar_matriz(matriz2);
-
 
 }
